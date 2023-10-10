@@ -1269,6 +1269,16 @@ func unquoteBytes(s []byte) (t []byte, ok bool) {
 				b[w] = '\t'
 				r++
 				w++
+			case 'x':
+				if (r + 2) < len(s) {
+					n, err := strconv.ParseUint(string(s[r+1:r+3]), 16, 8)
+					if err != nil {
+						return
+					}
+					b[w] = byte(n)
+					r += 3
+					w++
+				}
 			case 'u':
 				r--
 				rr := getu4(s[r:])
