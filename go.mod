@@ -1,4 +1,4 @@
-module github.com/titanous/json5
+module github.com/micro-editor/json5
 
 go 1.19
 
